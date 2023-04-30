@@ -1,0 +1,17 @@
+<h1>Search for companies</h1>
+<input type="text">
+<hr>
+<h2>Vacancies</h2>
+<ul>
+  <li *ngFor="let vacancy of vacancies">
+<!--    <h4>ID : {{vacancy.id}}</h4>-->
+    <h4>Name : {{vacancy.name}}</h4>
+    <h4>Salary : {{vacancy.salary}}</h4>
+    <a>Подробнее...</a>
+<!--    <h4>Description : {{vacancy.description}}</h4>-->
+<!--    <h4>City : {{vacancy.salary}}</h4>-->
+<!--    <h4>Address : {{vacancy.company}}</h4>-->
+    <div class="line"></div>
+  </li>
+</ul>
+

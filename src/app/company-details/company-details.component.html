@@ -6,8 +6,9 @@
 <h3>City : {{company.city}}</h3> <br>
 <h3>Address : {{company.address}}</h3> <br>
 
-
+<div *ngIf="is_staff">
 <button id="edit" *ngIf="!edit" (click)="edit=!edit" >Edit</button>
+</div>
 
   <div *ngIf="edit" id="edit-form">
     <label for="name">Name: </label>
@@ -22,5 +23,8 @@
     <label for="address">Address: </label>
     <input type="text" name="address" [(ngModel)]="editableCompany.address">
 
+<!--requirement: click which hits api-->
+
     <button id="save" (click)="saveChanges()">Save Changes</button>
+
   </div>

@@ -1,0 +1,10 @@
+<a routerLink="">Home</a>
+<h1>Sign In</h1>
+<label>username</label><br><br>
+<input [(ngModel)]="newUser.username">
+<br><br>
+<label>password</label><br><br>
+<input type="password" [(ngModel)]="newUser.password"><br><br>
+<!--requirement: click which hits api-->
+<button type="submit" (click)="login()">Enter</button><br><br>
+<a routerLink="/register">Create new account</a>

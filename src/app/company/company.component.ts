@@ -11,10 +11,12 @@ export class CompanyComponent implements OnInit{
 
   ngOnInit(): void {
     this.getCompanies();
+    this.is_staff = Boolean(localStorage.getItem("is_staff"));
   }
   companies : Company[] = [];
 
   newCompany : Company;
+  is_staff = false;
 
   constructor(private companyService: CompanyService) {
     this.newCompany = {} as Company;

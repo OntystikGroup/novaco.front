@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class CompanyService {
 
-  BASE_URL = 'http://192.168.137.4:8001'
+  BASE_URL = 'http://192.168.0.101:8001'
 
   constructor(private client : HttpClient) { }
 
@@ -20,13 +20,13 @@ export class CompanyService {
 
   getCompany(id: number): Observable<Company>{
     return this.client.get<Company>(
-      `${this.BASE_URL}/api/companies/${id}`
+      `${this.BASE_URL}/api/companies/${id}/`
     )
   }
 
   deleteCompany(id: number): Observable<any> {
     return this.client.delete<any>(
-      `${this.BASE_URL}/api/companies/${id}`
+      `${this.BASE_URL}/api/companies/${id}/`
     )
   }
 
@@ -35,7 +35,7 @@ export class CompanyService {
   }
 
   updateCompany(company: Company, vac_id: number) : Observable<Company>{
-    return this.client.put<Company>(
+    return this.client.patch<Company>(
       `${this.BASE_URL}/api/companies/${vac_id}/`,
       company
     )

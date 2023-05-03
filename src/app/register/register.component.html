@@ -1,0 +1,11 @@
+<a routerLink="">Home</a>
+<h1>Registration</h1>
+<label>username</label><br><br>
+<input [(ngModel)]="newUser.username">
+<br><br>
+<label>password</label><br><br>
+<input type="password" [(ngModel)]="newUser.password"><br><br>
+<label>Confirm the password</label><br><br>
+<input type="password" [(ngModel)]="password2"><br><br>
+<button type="submit" (click)="register()">Confirm</button><br><br>
+<a routerLink="/login">Already have an account? Log in</a>

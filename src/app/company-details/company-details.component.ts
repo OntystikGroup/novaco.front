@@ -14,6 +14,7 @@ export class CompanyDetailsComponent implements OnInit{
   loaded : boolean;
   editableCompany : Company;
   edit : boolean;
+  is_staff = false;
 
   constructor(private companyService : CompanyService, private route : ActivatedRoute) {
     this.company = {} as Company;
@@ -24,14 +25,13 @@ export class CompanyDetailsComponent implements OnInit{
 
   ngOnInit() {
     this.getCompany()
+    this.is_staff = Boolean(localStorage.getItem('is_staff'));
   }
 
   getCompany(){
     this.route.paramMap.subscribe((params) =>{
       const id = Number(params.get('id'));
-
       this.loaded = false;
-
       this.companyService.getCompany(id).subscribe((company) =>{
         this.company = company;
         this.loaded = true;

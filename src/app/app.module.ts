@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { CompanyComponent } from './company/company.component';
 import { VacancyComponent } from './vacancy/vacancy.component';
 
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 
 import {CommonModule} from '@angular/common';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import {RouterOutlet} from "@angular/router";
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {AuthInterceptor} from "./AuthInterceptor";
+import { VacancyDetailsComponent } from './vacancy-details/vacancy-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { HomeComponent } from './home/home.component';
     CompanyComponent,
     VacancyComponent,
     CompanyDetailsComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    VacancyDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,10 +36,13 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     CommonModule,
     RouterOutlet,
-    RouterOutlet
+    RouterOutlet,
+    HttpClientModule
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

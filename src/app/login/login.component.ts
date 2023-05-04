@@ -19,10 +19,10 @@ export class LoginComponent {
 
   login(){
     this.authService.getAuthToken(this.newUser.username, this.newUser.password).subscribe(data => {
-      sessionStorage.setItem("username", data.username);
+      localStorage.setItem("username", data.username);
       localStorage.setItem("access", data.tokens.access);
-      sessionStorage.setItem("refresh", data.tokens.refresh)
-      sessionStorage.setItem("is_staff",String(data.is_staff));
+      localStorage.setItem("refresh", data.tokens.refresh)
+      localStorage.setItem("is_staff",String(data.is_staff));
 
       this.router.navigate(['/']).then();
     },

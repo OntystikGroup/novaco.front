@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {AuthInterceptor} from "./AuthInterceptor";
 import { VacancyDetailsComponent } from './vacancy-details/vacancy-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { VacancyDetailsComponent } from './vacancy-details/vacancy-details.compo
     LoginComponent,
     RegisterComponent,
     VacancyDetailsComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

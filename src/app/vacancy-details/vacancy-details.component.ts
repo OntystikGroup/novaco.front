@@ -13,15 +13,20 @@ import {subscribeOn} from "rxjs";
 export class VacancyDetailsComponent implements OnInit {
 
   vacancy: Vacancy;
-  islogged = false;
-
+  isLogged = false;
+  currentUser: string;
   constructor(private vacancyService: VacancyService, private route: ActivatedRoute) {
     this.vacancy = {} as Vacancy;
-    this.islogged = Boolean(localStorage.getItem("isLogged"));
+    this.currentUser = '';
   }
 
   ngOnInit(): void {
     this.getVacancy()
+    let cookie_username = localStorage.getItem("username");
+    if (cookie_username){
+      this.isLogged = true;
+      this.currentUser = cookie_username;
+    }
   }
 
   getVacancy() {
@@ -34,7 +39,7 @@ export class VacancyDetailsComponent implements OnInit {
   }
 
   respond() {
-    if (this.islogged) {
+    if (this.isLogged) {
       this.vacancyService.respond(this.vacancy.id).subscribe(
         (data => {
           window.alert("Succesfully responded");

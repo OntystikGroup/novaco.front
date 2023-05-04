@@ -47,4 +47,10 @@ export interface VacancyShort{
 export interface VacancyList{
   result: VacancyShort[];
 }
+export  interface Respond{
+  vacancy_name: string;
+  expecting_salary: number;
+  company: string;
+  respond_at: Date;
+}
 

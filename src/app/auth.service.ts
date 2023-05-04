@@ -17,7 +17,7 @@ export class AuthService {
       "username": username,
       "password": password,
     }
-    return this.http.post<UserInfo>(`${this.BASE_URL}/api/login/`, data);
+    return this.http.post<UserInfo>(`${this.BASE_URL}/api/auth/login/`, data);
   }
 
   register(username:string, password: string): Observable<RegisteredUser>{
@@ -25,6 +25,6 @@ export class AuthService {
       "username": username,
       "password": password,
     }
-    return this.http.post<RegisteredUser>(`${this.BASE_URL}/api/register/`,data);
+    return this.http.post<RegisteredUser>(`${this.BASE_URL}/api/auth/register/`,data);
   }
 }

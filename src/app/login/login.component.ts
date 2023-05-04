@@ -24,7 +24,9 @@ export class LoginComponent {
       this.tokenService.saveUsername(data.username);
       this.tokenService.saveToken(data.tokens.access);
       this.tokenService.saveRefreshToken(data.tokens.refresh);
-      localStorage.setItem("is_staff",String(data.is_staff));
+      if (data.is_staff) {
+        localStorage.setItem("is_staff", String(data.is_staff));
+      }
       localStorage.setItem("isLogged", String(true));
       this.router.navigate(['/']).then();
     },

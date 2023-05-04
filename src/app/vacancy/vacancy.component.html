@@ -4,6 +4,7 @@
   <li *ngFor="let vacancy of vacancies">
     <h4>Name : {{vacancy.name}}</h4>
     <h4>Salary : {{vacancy.salary}}</h4>
+    <a routerLink="/vacancies/{{vacancy.id}}">More...</a><br><br>
     <div class="line"></div>
   </li>
 </ul>

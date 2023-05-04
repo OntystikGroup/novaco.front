@@ -10,33 +10,42 @@ import {subscribeOn} from "rxjs";
   templateUrl: './vacancy-details.component.html',
   styleUrls: ['./vacancy-details.component.css']
 })
-export class VacancyDetailsComponent implements OnInit{
+export class VacancyDetailsComponent implements OnInit {
 
-  vacancy: Vacancy ;
-  islogged  = false;
+  vacancy: Vacancy;
+  islogged = false;
 
-  constructor(private vacancyService : VacancyService, private route : ActivatedRoute) {
+  constructor(private vacancyService: VacancyService, private route: ActivatedRoute) {
     this.vacancy = {} as Vacancy;
+    this.islogged = Boolean(localStorage.getItem("isLogged"));
   }
 
   ngOnInit(): void {
     this.getVacancy()
   }
 
-  getVacancy(){
-      this.route.paramMap.subscribe((params) =>{
-        const id = Number(params.get('id'));
-        this.vacancyService.getVacancy(id).subscribe((vacancy) =>{
-          this.vacancy = vacancy;
-        })
+  getVacancy() {
+    this.route.paramMap.subscribe((params) => {
+      const id = Number(params.get('id'));
+      this.vacancyService.getVacancy(id).subscribe((vacancy) => {
+        this.vacancy = vacancy;
       })
+    })
+  }
+
+  respond() {
+    if (this.islogged) {
+      this.vacancyService.respond(this.vacancy.id).subscribe(
+        (data => {
+          window.alert("Succesfully responded");
+        }),
+        error => {
+          window.alert(error['error']['non_field_errors'][0]);
+        }
+      )
     }
-
-    respond(){
-
-      this.vacancyService.respond(this.vacancy.id)
-
-
-
+    else {
+      alert("Please authorize first to respond");
     }
+  }
 }

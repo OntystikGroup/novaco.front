@@ -23,7 +23,7 @@ export class LoginComponent {
       localStorage.setItem("access", data.tokens.access);
       sessionStorage.setItem("refresh", data.tokens.refresh)
       sessionStorage.setItem("is_staff",String(data.is_staff));
-
+      localStorage.setItem("isLogged", String(true));
       this.router.navigate(['/']).then();
     },
       error => {

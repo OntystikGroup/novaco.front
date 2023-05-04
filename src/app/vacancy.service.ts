@@ -26,6 +26,9 @@ export class VacancyService {
     return this.client.get<Vacancy>(`${this.BASE_URL}/api/vacancies/${id}/`)
   }
   respond(vacancy_id:number):Observable<any>{
-
+    let data = {
+      "vacancy_id": vacancy_id
+    }
+    return this.client.post(`${this.BASE_URL}/api/respond/`, data)
   }
 }

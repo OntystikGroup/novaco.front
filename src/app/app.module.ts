@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import {AuthInterceptor} from "./AuthInterceptor";
 import { VacancyDetailsComponent } from './vacancy-details/vacancy-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import {CustomDatePipe} from "./custom.datepipe";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
     RegisterComponent,
     VacancyDetailsComponent,
     ProfileComponent,
+    CustomDatePipe,
   ],
   imports: [
     BrowserModule,

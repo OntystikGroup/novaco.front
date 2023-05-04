@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AuthService} from "../auth.service";
 import {User} from "../models";
 import {ActivatedRoute, Router} from "@angular/router";
+import {TokenService} from "../token.service";
 
 @Component({
   selector: 'app-login',
@@ -13,15 +14,16 @@ export class LoginComponent {
   newUser: User;
   constructor(private authService:AuthService,
               private route : ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private tokenService: TokenService) {
     this.newUser = {} as User;
   }
 
   login(){
     this.authService.getAuthToken(this.newUser.username, this.newUser.password).subscribe(data => {
-      localStorage.setItem("username", data.username);
-      localStorage.setItem("access", data.tokens.access);
-      localStorage.setItem("refresh", data.tokens.refresh)
+      this.tokenService.saveUsername(data.username);
+      this.tokenService.saveToken(data.tokens.access);
+      this.tokenService.saveRefreshToken(data.tokens.refresh);
       localStorage.setItem("is_staff",String(data.is_staff));
       localStorage.setItem("isLogged", String(true));
       this.router.navigate(['/']).then();

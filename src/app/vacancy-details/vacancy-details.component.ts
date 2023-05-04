@@ -3,6 +3,7 @@ import {Company, Vacancy} from "../models";
 import {ActivatedRoute} from "@angular/router";
 import {CompanyService} from "../company.service";
 import {VacancyService} from "../vacancy.service";
+import {subscribeOn} from "rxjs";
 
 @Component({
   selector: 'app-vacancy-details',
@@ -30,7 +31,12 @@ export class VacancyDetailsComponent implements OnInit{
         })
       })
     }
+
     respond(){
+
+      this.vacancyService.respond(this.vacancy.id)
+
+
 
     }
 }

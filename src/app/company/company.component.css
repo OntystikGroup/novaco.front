@@ -36,3 +36,10 @@
 .delete:active{
   transform: scale(1.05);
 }
+a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+a{
+  color: blue;
+}

@@ -22,7 +22,7 @@ export interface AuthToken {
 
 export interface UserInfo {
   username: string
-  token: string
+  tokens: AuthToken
   is_staff:boolean
 }
 export interface User{
@@ -47,3 +47,4 @@ export interface VacancyShort{
 export interface VacancyList{
   result: VacancyShort[];
 }
+

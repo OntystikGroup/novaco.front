@@ -8,13 +8,14 @@
 <br><br>
 <a routerLink="/companies">Companies</a>
 <h1>Search for vacancies</h1>
-<input type="text">
+<input type="text" [(ngModel)]="searchVacancy"><br><br>
+<button (click)="search()">Search</button>
 <hr>
 <ul>
   <li *ngFor="let vacancy of vacancies">
     <h4>Name : {{vacancy.name}}</h4>
     <h4>Salary : {{vacancy.salary}}</h4>
-    <a routerLink="/vacancies/{{vacancy.id}}">Подробнее...</a>
+    <a routerLink="/vacancies/{{vacancy.id}}">More...</a>
     <div class="line"></div>
   </li>
 </ul>

@@ -47,10 +47,17 @@ export class HomeComponent {
     });
   }
 
-  search(){
-    console.log(this.searchVacancy);
-    this.searchService.search(this.searchVacancy).subscribe(vacancies=>{
-      this.vacancies = vacancies;
-    })
+  search() {
+    if (this.searchVacancy.length > 0) {
+      this.searchService.search(this.searchVacancy).subscribe(vacancies => {
+        if (vacancies.length > 0) {
+          this.vacancies = vacancies;
+        }else{
+          alert(`No results found for ${this.searchVacancy}`)
+        }
+      })
+    }else{
+      this.listVacancies();
+    }
   }
 }

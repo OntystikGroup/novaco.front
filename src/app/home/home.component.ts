@@ -53,9 +53,7 @@ export class HomeComponent {
   }
 
   logOut(){
-    localStorage.removeItem("token")
-    localStorage.removeItem("username")
-    localStorage.removeItem('is_staff')
+    localStorage.clear();
     location.reload();
   }
 }

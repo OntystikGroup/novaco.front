@@ -27,4 +27,11 @@ export class AuthService {
     }
     return this.http.post<RegisteredUser>(`${this.BASE_URL}/api/auth/register/`,data);
   }
+
+  refreshToken(token: string): Observable<AccessTokenData>{
+    let data = {
+      "refresh": token
+    }
+    return this.http.post<AccessTokenData>(`${this.BASE_URL}/api/auth/refresh/`, data)
+  }
 }

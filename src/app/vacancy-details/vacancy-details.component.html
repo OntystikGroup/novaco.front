@@ -1,5 +1,10 @@
-<a routerLink="/profile">{{currentUser}}</a><br><br>
-<a routerLink="">Home</a>
+<div *ngIf="isLogged;else another_content">
+  <a routerLink="/profile">{{currentUser}}</a><br><br>
+</div>
+<ng-template #another_content>
+  <a routerLink="/login">Log In</a><br><br>
+</ng-template>
+<a routerLink="">Home</a><br><br>
 <h4>ID : {{vacancy.id}}</h4>
 <h4>Name : {{vacancy.name}}</h4>
 <h4>Description : {{vacancy.description}}</h4>

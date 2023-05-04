@@ -20,6 +20,13 @@ export class AuthService {
     return this.http.post<UserInfo>(`${this.BASE_URL}/api/auth/login/`, data);
   }
 
+  logOut(refreshToken: string | null) {
+    let data = {
+      "refresh": refreshToken
+    }
+    return this.http.post(`${this.BASE_URL}/api/auth/logout/`, data);
+  }
+
   register(username:string, password: string): Observable<RegisteredUser>{
     let data = {
       "username": username,

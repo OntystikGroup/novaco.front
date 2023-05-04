@@ -4,6 +4,7 @@ import {CompanyService} from "../company.service";
 import {VacancyService} from "../vacancy.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../auth.service";
+import {TokenService} from "../token.service";
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ export class HomeComponent {
   constructor(private vacancyService: VacancyService,
               private route: ActivatedRoute,
               private router: Router,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private tokenService: TokenService) {
     this.loaded = true;
     this.username = '';
   }
@@ -53,8 +55,11 @@ export class HomeComponent {
   }
 
   logOut(){
-    localStorage.clear();
-    location.reload();
+    let token = this.tokenService.getRefreshToken();
+    this.authService.logOut(token).subscribe(data => {
+      localStorage.clear()
+      window.location.reload();
+    });
   }
 }
 

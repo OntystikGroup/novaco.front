@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {VacancyService} from "../vacancy.service";
-import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-import {Vacancy} from "../models";
+import {VacancyShort} from "../models";
 
 @Component({
   selector: 'app-vacancy',
@@ -11,7 +10,7 @@ import {Vacancy} from "../models";
 })
 export class VacancyComponent implements OnInit{
   loaded : Boolean;
-  vacancies : Vacancy[] = [];
+  vacancies : VacancyShort[] = [];
 
   constructor(private vacancyService: VacancyService, private route: ActivatedRoute) {
     this.loaded = true;

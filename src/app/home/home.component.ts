@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Vacancy} from "../models";
+import {VacancyShort} from "../models";
 import {VacancyService} from "../vacancy.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../auth.service";
@@ -13,7 +13,7 @@ import {TokenService} from "../token.service";
 export class HomeComponent {
 
   loaded : Boolean;
-  vacancies : Vacancy[] = [];
+  vacancies : VacancyShort[] = [];
   isLogged = false;
   username: string
 

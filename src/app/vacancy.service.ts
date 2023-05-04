@@ -12,14 +12,14 @@ export class VacancyService {
 
   constructor(private client: HttpClient) { }
 
-  getCompanyVacancies(compID: number): Observable<Vacancy[]>{
-    return this.client.get<Vacancy[]>(
+  getCompanyVacancies(compID: number): Observable<VacancyShort[]>{
+    return this.client.get<VacancyShort[]>(
       `${this.BASE_URL}/api/companies/${compID}/vacancies/`
     )
   }
 
-  getVacancies(): Observable<Vacancy[]>{
-    return this.client.get<Vacancy[]>(`${this.BASE_URL}/api/vacancies/`)
+  getVacancies(): Observable<VacancyShort[]>{
+    return this.client.get<VacancyShort[]>(`${this.BASE_URL}/api/vacancies/`)
   }
 
   getVacancy(id:number):Observable<Vacancy>{

@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit{
               private tokenService: TokenService,
               private authService: AuthService,
               private router: Router) {
-    this.myResponds = {} as Respond[];
+    this.myResponds = [] as Respond[];
     this.username = '';
   }
 

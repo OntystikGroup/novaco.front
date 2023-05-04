@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthToken, Company, Vacancy, VacancyShort} from "../models";
-import {CompanyService} from "../company.service";
+import {Component} from '@angular/core';
+import {Vacancy} from "../models";
 import {VacancyService} from "../vacancy.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../auth.service";
@@ -36,16 +35,6 @@ export class HomeComponent {
       }
   }
 
-  getVacancies(){
-    this.route.paramMap.subscribe((params) =>{
-      const id = Number(params.get('id'));
-      this.loaded = false;
-      this.vacancyService.getCompanyVacancies(id).subscribe((vacancies) =>{
-        this.vacancies = vacancies;
-        this.loaded = true;
-      })
-    })
-  }
   listVacancies() {
     this.loaded = false;
     this.vacancyService.getVacancies().subscribe(vacancies => {
@@ -62,4 +51,3 @@ export class HomeComponent {
     });
   }
 }
-

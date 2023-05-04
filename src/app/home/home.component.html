@@ -1,9 +1,8 @@
 <div *ngIf="isLogged;else other_content">
-  <a>{{username}}</a><br><br>
-  <a (click)="logOut()">log_out</a>
+  <a routerLink="/profile">{{username}}</a><br>
 </div>
 <ng-template #other_content>
-  <a routerLink="/login">Log in</a><br>
+  <a routerLink="/login">Log in</a><br><br>
   <a routerLink="/register">Create new account</a>
 </ng-template>
 <br><br>

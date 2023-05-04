@@ -12,14 +12,20 @@ export class CompanyComponent implements OnInit{
   ngOnInit(): void {
     this.getCompanies();
     this.is_staff = Boolean(localStorage.getItem("is_staff"));
+    let cookie_username = localStorage.getItem("username");
+    if (cookie_username){
+      this.username = cookie_username;
+    }
   }
   companies : Company[] = [];
 
   newCompany : Company;
   is_staff = false;
+  username: string;
 
   constructor(private companyService: CompanyService) {
     this.newCompany = {} as Company;
+    this.username = '';
   }
 
   getCompanies(){
